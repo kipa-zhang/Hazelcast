@@ -9,6 +9,8 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import com.kipa.model.CMS_File;
+
 public class FileUtil {
 
 	/**

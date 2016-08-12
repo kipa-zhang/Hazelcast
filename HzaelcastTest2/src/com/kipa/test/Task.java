@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.hazelcast.client.HazelcastClient;
 import com.hazelcast.core.HazelcastInstance;
+import com.kipa.model.CMS_Msg;
 import com.kipa.test.db.DBHelper;
 
 public class Task {

@@ -1,4 +1,4 @@
-package com.kipa.test;
+package com.kipa.model;
 
 import java.io.Serializable;
 
