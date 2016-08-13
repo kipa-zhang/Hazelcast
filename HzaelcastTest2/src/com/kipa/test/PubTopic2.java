@@ -5,6 +5,7 @@ import com.hazelcast.client.config.ClientConfig;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.ITopic;
 import com.kipa.model.CMS_File;
+import com.kipa.model.CMS_Msg;
 
 public class PubTopic2 {
 
@@ -15,9 +16,24 @@ public class PubTopic2 {
 		HazelcastInstance hazelcastInstance = HazelcastClient
 				.newHazelcastClient(clientConfig);
 		
-		ITopic<CMS_File> topic = hazelcastInstance.getTopic("default");
+		ITopic<CMS_Msg> topic = hazelcastInstance.getTopic("default");
 		
-		//发送信息（File or String）
+		//发送信息
+		int i = 0;
+		do{
+			CMS_Msg msg = new CMS_Msg("ST" + i, TimeUtil.getTime());
+			topic.publish(msg);
+			
+			//信息间隔5秒
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			                            
+			i++;
+		}while(true);
+		
 		
 		//发送文件
 //		String filepath = "C:/Users/shizhou/Desktop/hazelcast-3.6.4/vedio.mp4";
@@ -30,16 +46,8 @@ public class PubTopic2 {
 //				String msg = "In dynamically scalable partitioned storage systems, whether it is a NoSQL database, filesystem or in-memory data grid, changes in the cluster (adding or removing a node) can lead to big data moves in the network to re-balance the cluster. Re-balancing will be needed for both primary and backup data on those nodes. If a node crashes for example, the dead node’s data has to be re-owned (become primary) by other node(s) and also its backup has to be taken immediately to be fail-safe again. Shuffling megabytes of data around has a negative effect in the cluster as it consumes your valuable resources such as network, CPU and RAM. It might also lead to higher latency of your operations during that period.";
 //				topic.publish(new CMS_Msg("In dynamically scalable partitioned storage systems, whether it is a NoSQL database, filesystem or in-memory data grid, changes in the cluster (adding or removing a node) can lead to big data moves in the network to re-balance the cluster. Re-balancing will be needed for both primary and backup data on those nodes. If a node crashes for example, the dead node’s data has to be re-owned (become primary) by other node(s) and also its backup has to be taken immediately to be fail-safe again. Shuffling megabytes of data around has a negative effect in the cluster as it consumes your valuable resources such as network, CPU and RAM. It might also lead to higher latency of your operations during that period.", TimeUtil.getTime(null)));
 		
-		String filepath1 = "C:/Users/shizhou/Desktop/hazelcast-3.6.4/mouse";
-		String filepath2 = ".mp4";
-		topic.publish(FileUtil.getFile(filepath1+1+filepath2));
-//		for(int i=1;i<1;i++){
-//			try {
-//				Thread.sleep(10000);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//		}
+//		String filepath1 = "C:/Users/shizhou/Desktop/hazelcast-3.6.4/mouse";
+//		String filepath2 = ".mp4";
 		
 //		do{
 //			try {

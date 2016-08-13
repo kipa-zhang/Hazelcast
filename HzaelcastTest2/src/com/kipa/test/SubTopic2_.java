@@ -1,5 +1,7 @@
 package com.kipa.test;
 
+import java.util.List;
+
 import com.hazelcast.client.HazelcastClient;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.ITopic;
@@ -9,22 +11,27 @@ import com.kipa.model.CMS_Msg;
 
 public class SubTopic2_ implements MessageListener<CMS_Msg> {
 
-	@Override
+	static HazelcastInstance hazelcastInstance = HazelcastClient
+			.newHazelcastClient();
+	
 	public void onMessage(Message<CMS_Msg> message) {
 		CMS_Msg msg = message.getMessageObject();
 		System.out.println("Message received " + TimeUtil.getFormatTime(TimeUtil.getTime(), null));
-		System.out.println(msg.getMsg() + " : " + msg.getTimeStamp());
+		System.out.println(msg.getMsg() + " : " + TimeUtil.getFormatTime(msg.getTimeStamp(), null));
 		FileUtil.writeFile(msg.getMsg(),
 				TimeUtil.getFormatTime(msg.getTimeStamp(),null),
 				TimeUtil.getFormatTime(TimeUtil.getTime(), null), 
-				"e:/", "log.txt");
+				"e:/", "cmslog.txt");
+		
+		//将数据存储到 Hazelcast 中
+		List<CMS_Msg> msgList = hazelcastInstance.getList("msg");
+		msgList.add(msg);
 	}
 
 	public static void main(String[] args) {
 		SubTopic2_ subTopic2 = new SubTopic2_();
 
-		HazelcastInstance hazelcastInstance = HazelcastClient
-				.newHazelcastClient();
+		
 		ITopic topic = hazelcastInstance.getTopic("default");
 		topic.addMessageListener(subTopic2);
 	}

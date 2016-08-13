@@ -56,7 +56,7 @@ public class FileUtil {
     /** 
      * 根据byte数组，生成文件,并保存
      */  
-    public static void getFile(byte[] bfile, String filePath,String fileName) {  
+    public static void saveFile(byte[] bfile, String filePath,String fileName) {  
         BufferedOutputStream bos = null;  
         FileOutputStream fos = null;  
         File file = null;  
