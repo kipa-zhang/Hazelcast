@@ -1,20 +1,15 @@
 package com.kipa.test;
 
-import com.hazelcast.client.HazelcastClient;
-import com.hazelcast.client.config.ClientConfig;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.ITopic;
+import com.kipa.app.HazelcastApplication;
 import com.kipa.model.CMS_File;
 import com.kipa.model.CMS_Msg;
 
 public class PubTopic2 {
 
 	public static void main(String[] args) {
-		// 所有服务端需配置IP信息
-		ClientConfig clientConfig = new ClientConfig();
-		clientConfig.getNetworkConfig().addAddress("10.41.87.46");
-		HazelcastInstance hazelcastInstance = HazelcastClient
-				.newHazelcastClient(clientConfig);
+		HazelcastInstance hazelcastInstance = HazelcastApplication.getHazelcastClientInstance();
 		
 		ITopic<CMS_Msg> topic = hazelcastInstance.getTopic("default");
 		
