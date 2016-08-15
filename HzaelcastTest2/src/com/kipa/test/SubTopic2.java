@@ -1,5 +1,6 @@
 package com.kipa.test;
 
+import java.io.File;
 import java.util.List;
 
 import com.hazelcast.client.HazelcastClient;
@@ -20,7 +21,7 @@ public class SubTopic2 implements MessageListener<CMS_File> {
 	public void onMessage(Message<CMS_File> message) {
 		CMS_File file = message.getMessageObject();
 		System.out.println("Message received " + TimeUtil.getFormatTime(TimeUtil.getTime(), null));
-		System.out.println(file.getFileName() + " : " + file.getTimeStamp());
+		System.out.println(file.getFileName() + " : " + TimeUtil.getFormatTime(file.getTimeStamp(),null));
 		
 		//文件存储路径
 		String filepath = "e:/files/"+TimeUtil.getFormatTime("yyyy-MM-dd");
@@ -32,7 +33,7 @@ public class SubTopic2 implements MessageListener<CMS_File> {
 			System.out.println("failed copy file");
 		}
 		//记录日志
-		FileUtil.writeFile(file.getFileName()+"("+ filepath + file.getFileName() +")", 
+		FileUtil.writeFile(file.getFileName()+"("+ filepath + File.separator + file.getFileName() +")", 
 				TimeUtil.getFormatTime(file.getTimeStamp(),null), 
 				TimeUtil.getFormatTime(TimeUtil.getTime(),null), "e:/", "filelog.txt");
 		
