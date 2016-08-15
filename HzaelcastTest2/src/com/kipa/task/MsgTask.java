@@ -62,8 +62,8 @@ public class MsgTask extends TimerTask{
 		this.intevalPeriod = intevalPeriod;
 	}
 	
-	private static void main(String[] args) {
-		FileTask ft = new FileTask(0, 1000);
+	public static void main(String[] args) {
+		MsgTask ft = new MsgTask(0, 1000);
 		ft.excute();
 	}
 }

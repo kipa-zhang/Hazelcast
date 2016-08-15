@@ -5,6 +5,7 @@ import com.hazelcast.core.ITopic;
 import com.kipa.app.HazelcastApplication;
 import com.kipa.model.CMS_File;
 import com.kipa.model.CMS_Msg;
+import com.kipa.util.FileUtil;
 import com.kipa.util.TimeUtil;
 
 public class PubTopic2 {
@@ -12,30 +13,30 @@ public class PubTopic2 {
 	public static void main(String[] args) {
 		HazelcastInstance hazelcastInstance = HazelcastApplication.getHazelcastClientInstance();
 		
-		ITopic<CMS_Msg> topic = hazelcastInstance.getTopic("default");
+		ITopic<CMS_File> topic = hazelcastInstance.getTopic("default");
 		
 		//发送信息
-		int i = 0;
-		do{
-			CMS_Msg msg = new CMS_Msg("ST" + i, TimeUtil.getTime());
-			topic.publish(msg);
-			
-			//信息间隔5秒
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			                            
-			i++;
-		}while(true);
+//		int i = 0;
+//		do{
+//			CMS_Msg msg = new CMS_Msg("ST" + i, TimeUtil.getTime());
+//			topic.publish(msg);
+//			
+//			//信息间隔5秒
+//			try {
+//				Thread.sleep(5000);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//			                            
+//			i++;
+//		}while(true);
 		
 		
 		//发送文件
 //		String filepath = "C:/Users/shizhou/Desktop/hazelcast-3.6.4/vedio.mp4";
 //		String filepath = "F:/HIPPO/2.zip";
 //		String filepath = "F:/HIPPO/testsuite.rar";
-//		String filepath = "C:/Users/shizhou/Desktop/2.jpg";
+		String filepath = "C:/Users/shizhou/Desktop/2.jpg";
 //		String filepath = "C:/Users/shizhou/Desktop/before.PNG";
 //		String filepath = "F:/Mysql/mysql-5.5.21-winx64.msi";
 //		topic.publish(FileUtil.getFile(filepath));
@@ -45,13 +46,13 @@ public class PubTopic2 {
 //		String filepath1 = "C:/Users/shizhou/Desktop/hazelcast-3.6.4/mouse";
 //		String filepath2 = ".mp4";
 		
-//		do{
-//			try {
-//				topic.publish(FileUtil.getFile(filepath));
-//				Thread.sleep(10000);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//		}while(true);
+		do{
+			try {
+				topic.publish(FileUtil.getFile(filepath));
+				Thread.sleep(10000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}while(true);
 	}
 }

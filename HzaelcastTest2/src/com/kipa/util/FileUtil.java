@@ -24,6 +24,7 @@ public class FileUtil {
 		cms_file.setFileName(file.getName());
 		cms_file.setFileSize(file.length());
 		cms_file.setFileByte(getBytes(filepath));
+		cms_file.setFileType(getFileType(file.getName()));
 		cms_file.setTimeStamp(TimeUtil.getTime());
 		return cms_file;
 	}
@@ -133,8 +134,25 @@ public class FileUtil {
         }  
     }
     
-//    public static void main(String[] args) {
-//		FileUtil.writeFile("Hello,world!", "e:/", "log.txt");
-//	}
+    /**
+     *  right filename like "a.b" , else return null !!!
+     * @param filename
+     * @return
+     */
+    public static String getFileType(String filename){
+    	if(filename != null && filename != ""){
+    		if(filename.lastIndexOf(".")>0){
+    			
+    			return filename.toLowerCase().substring(filename.lastIndexOf('.')+1);
+    		}else
+    			return null;
+    	}else
+    		return null;
+    }
+    
+    public static void main(String[] args) {
+//		FileUtil.writeFile("Hello,world!", "e:/", "log.txt");Data truncation: Out of range value for column 'timestamp' at row 1.
+//    	System.out.println(FileUtil.getFileType("a.b.C"));
+	}
     
 }
