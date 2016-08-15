@@ -64,6 +64,7 @@ public class FileUtil {
             File dir = new File(filePath);  
             if(!dir.exists()&&dir.isDirectory()){//判断文件目录是否存在  
                 dir.mkdirs();  
+                System.out.println(1);
             }  
             file = new File(filePath+"\\"+fileName);  
             fos = new FileOutputStream(file);  
