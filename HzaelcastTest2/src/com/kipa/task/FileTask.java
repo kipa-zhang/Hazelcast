@@ -62,7 +62,7 @@ public class FileTask extends TimerTask{
 	}
 	
 	public static void main(String[] args) {
-		FileTask ft = new FileTask(0, 1000);
+		FileTask ft = new FileTask(0, 30000);
 		ft.excute();
 	}
 
