@@ -63,7 +63,8 @@ public class MsgTask extends TimerTask{
 	}
 	
 	public static void main(String[] args) {
+
 		MsgTask ft = new MsgTask(0, 30000);
-		ft.excute();
+        ft.excute();
 	}
 }
