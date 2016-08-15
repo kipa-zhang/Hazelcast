@@ -8,6 +8,7 @@ import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.ITopic;
 import com.hazelcast.core.Message;
 import com.hazelcast.core.MessageListener;
+import com.kipa.app.HazelcastApplication;
 import com.kipa.model.CMS_File;
 import com.kipa.model.CMS_Msg;
 import com.kipa.util.FileUtil;
@@ -15,8 +16,7 @@ import com.kipa.util.TimeUtil;
 
 public class SubTopic2 implements MessageListener<CMS_File> {
 
-	static HazelcastInstance hazelcastInstance = HazelcastClient
-			.newHazelcastClient();
+	static HazelcastInstance hazelcastInstance = HazelcastApplication.getHazelcastClientInstance();
 	
 	public void onMessage(Message<CMS_File> message) {
 		CMS_File file = message.getMessageObject();
