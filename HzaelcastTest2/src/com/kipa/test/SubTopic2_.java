@@ -19,7 +19,7 @@ public class SubTopic2_ implements MessageListener<CMS_Msg> {
 	public void onMessage(Message<CMS_Msg> message) {
 		CMS_Msg msg = message.getMessageObject();
 		System.out.println("Message received " + TimeUtil.getFormatTime(TimeUtil.getTime(), null));
-		System.out.println(msg.getMsg() + " : " + TimeUtil.getFormatTime(msg.getTimeStamp(), null));
+		System.out.println(msg.getMsg() + "   send: " + TimeUtil.getFormatTime(msg.getTimeStamp(), null));
 		FileUtil.writeFile(msg.getMsg(),
 				TimeUtil.getFormatTime(msg.getTimeStamp(),null),
 				TimeUtil.getFormatTime(TimeUtil.getTime(), null), 

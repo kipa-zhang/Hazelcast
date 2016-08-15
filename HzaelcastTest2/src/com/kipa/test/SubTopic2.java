@@ -20,8 +20,8 @@ public class SubTopic2 implements MessageListener<CMS_File> {
 	
 	public void onMessage(Message<CMS_File> message) {
 		CMS_File file = message.getMessageObject();
-		System.out.println("Message received " + TimeUtil.getFormatTime(TimeUtil.getTime(), null));
-		System.out.println(file.getFileName() + " : " + TimeUtil.getFormatTime(file.getTimeStamp(),null));
+		System.out.println("Message received :" + TimeUtil.getFormatTime(TimeUtil.getTime(), null));
+		System.out.println(file.getFileName() + "   send: " + TimeUtil.getFormatTime(file.getTimeStamp(),null));
 		
 		//文件存储路径
 		String filepath = "e:/files/"+TimeUtil.getFormatTime("yyyy-MM-dd");
