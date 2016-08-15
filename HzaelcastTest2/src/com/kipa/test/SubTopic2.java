@@ -9,6 +9,8 @@ import com.hazelcast.core.Message;
 import com.hazelcast.core.MessageListener;
 import com.kipa.model.CMS_File;
 import com.kipa.model.CMS_Msg;
+import com.kipa.util.FileUtil;
+import com.kipa.util.TimeUtil;
 
 public class SubTopic2 implements MessageListener<CMS_File> {
 
@@ -36,7 +38,7 @@ public class SubTopic2 implements MessageListener<CMS_File> {
 		
 		//将数据存储到 Hazelcast 中
 		List<CMS_File> fileList = hazelcastInstance.getList("file");
-		file.setFilpath(filepath + file.getFileName());
+		file.setFilepath(filepath + file.getFileName());
 		fileList.add(file);
 		
 	}

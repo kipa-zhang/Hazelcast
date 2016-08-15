@@ -18,7 +18,7 @@ public class CMS_File implements Serializable{
 	private String fileName;
 	private long fileSize;
 	private String fileType;
-	private String filpath;
+	private String filepath;
 	//发送端时间戳
 	private long timeStamp;
 	
@@ -67,10 +67,10 @@ public class CMS_File implements Serializable{
 	public void setTimeStamp(long timeStamp) {
 		this.timeStamp = timeStamp;
 	}
-	public String getFilpath() {
-		return filpath;
+	public String getFilepath() {
+		return filepath;
 	}
-	public void setFilpath(String filpath) {
-		this.filpath = filpath;
+	public void setFilepath(String filepath) {
+		this.filepath = filepath;
 	}
 }

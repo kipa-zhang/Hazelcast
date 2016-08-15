@@ -7,7 +7,9 @@ public class MsgDao {
 	DBHelper db = new DBHelper();
 	
 	public int insert(CMS_Msg msg){
-		String sql = "INSERT INTO test (name) VALUES('KIPA')";
+		String sql = "INSERT INTO cms_msg(content,timestamp) VALUES('"+
+										msg.getMsg()+"','"+
+										msg.getTimeStamp()+"')";
 		return db.insertReturnAutoId(sql, null);
 	}
 }

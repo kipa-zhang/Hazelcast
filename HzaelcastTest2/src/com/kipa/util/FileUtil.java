@@ -1,4 +1,4 @@
-package com.kipa.test;
+package com.kipa.util;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;

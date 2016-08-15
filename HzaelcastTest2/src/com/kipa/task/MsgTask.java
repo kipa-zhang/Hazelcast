@@ -16,7 +16,7 @@ public class MsgTask extends TimerTask{
 	
 	private MsgDao msgDao;
 	
-	HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
+	private HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
 	
 	/**
 	 * @param delay (ms)
@@ -30,7 +30,7 @@ public class MsgTask extends TimerTask{
 	
 	@Override
 	public void run() {
-		System.out.println("11");
+		System.out.println("Start store msg info!");
 		
 		List<CMS_Msg> msgList = hazelcastInstance.getList("msg");
 		
@@ -62,7 +62,7 @@ public class MsgTask extends TimerTask{
 		this.intevalPeriod = intevalPeriod;
 	}
 	
-	public static void main(String[] args) {
+	private static void main(String[] args) {
 		FileTask ft = new FileTask(0, 1000);
 		ft.excute();
 	}

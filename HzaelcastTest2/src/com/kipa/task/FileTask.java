@@ -29,7 +29,7 @@ public class FileTask extends TimerTask{
 	
 	@Override
 	public void run() {
-		System.out.println("11");
+		System.out.println("Start store file info!");
 		List<CMS_File> fileList = hazelcastInstance.getList("file");
 		
 		for (CMS_File cms_File : fileList) {
