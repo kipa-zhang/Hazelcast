@@ -9,7 +9,7 @@ import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.ITopic;
 
-public class PubTopic {
+public class PubTopic_old {
 
 	public static void main(String[] args) {
 

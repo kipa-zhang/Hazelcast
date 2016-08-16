@@ -8,7 +8,7 @@ import com.hazelcast.core.ITopic;
 import com.hazelcast.core.Message;
 import com.hazelcast.core.MessageListener;
 
-public class SubTopic implements MessageListener<String> {
+public class SubTopic_old implements MessageListener<String> {
 
 	public void onMessage(Message<String> message) {
 		String myEvent = message.getMessageObject();
@@ -16,7 +16,7 @@ public class SubTopic implements MessageListener<String> {
 	}
 
 	public static void main(String[] args) {
-		SubTopic sample = new SubTopic();
+		SubTopic_old sample = new SubTopic_old();
 		
 		//最好服务端都配置IP
 //		ClientConfig clientConfig = new ClientConfig();
