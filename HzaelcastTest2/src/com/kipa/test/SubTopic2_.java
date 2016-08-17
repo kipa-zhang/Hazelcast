@@ -36,6 +36,8 @@ public class SubTopic2_ implements MessageListener<CMS_Msg> {
 		
 		ITopic topic = hazelcastInstance.getTopic("default");
 		topic.addMessageListener(subTopic2);
+		
+//		hazelcastInstance.shutdown();
 	}
 
 }
