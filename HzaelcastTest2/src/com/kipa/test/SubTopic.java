@@ -13,7 +13,7 @@ import com.kipa.model.CMS_File;
 import com.kipa.util.FileUtil;
 import com.kipa.util.TimeUtil;
 
-public class SubTopic2 implements MessageListener<CMS_File> {
+public class SubTopic implements MessageListener<CMS_File> {
 
 	static HazelcastInstance hazelcastInstance = HazelcastApplication.getHazelcastClientInstance();
 	
@@ -44,7 +44,7 @@ public class SubTopic2 implements MessageListener<CMS_File> {
 	}
 
 	public static void main(String[] args) {
-		SubTopic2 subTopic2 = new SubTopic2();
+		SubTopic subTopic2 = new SubTopic();
 
 		HazelcastInstance hazelcastInstance = HazelcastClient
 				.newHazelcastClient();

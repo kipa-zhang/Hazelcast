@@ -8,7 +8,7 @@ import com.kipa.model.CMS_Msg;
 import com.kipa.util.FileUtil;
 import com.kipa.util.TimeUtil;
 
-public class PubTopic2 {
+public class PubTopic {
 
 	public static void main(String[] args) {
 		HazelcastInstance hazelcastInstance = HazelcastApplication
