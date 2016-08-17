@@ -41,6 +41,15 @@ public class HazelcastSubTopicListener<T> implements MessageListener<T>{
 		tt.addMessageListener(this);
 	}
 	
+	public void close(){
+		try {
+			Thread.sleep(5000);
+			hazelcastInstance.shutdown();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args) {
 		HazelcastSubTopicListener<String> hs = new HazelcastSubTopicListener<String>("default");
 		hs.registerListener();
