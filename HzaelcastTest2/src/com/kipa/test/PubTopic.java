@@ -12,8 +12,8 @@ public class PubTopic {
 
 	public static void main(String[] args) {
 		HazelcastInstance hazelcastInstance = HazelcastApplication
-				.getHazelcastClientInstance();
-
+				.getHazelcastInstance();
+		
 		ITopic<CMS_File> topic = hazelcastInstance.getTopic("default");
 
 		// 发送信息
@@ -38,7 +38,7 @@ public class PubTopic {
 		// String filepath = "F:/HIPPO/2.zip";
 		// String filepath = "F:/HIPPO/testsuite.rar";
 		// String filepath = "C:/Users/shizhou/Desktop/2.jpg";
-		String filepath = "C:/Users/shizhou/Desktop/TestFiles/image_1M.jpg";
+		String filepath = "C:/Users/shizhou/Desktop/hazelcast-3.6.4/lib/hazelcast-cloud-3.6.4.jar";
 		// String filepath = "C:/Users/shizhou/Desktop/before.PNG";
 		// String filepath = "F:/Mysql/mysql-5.5.21-winx64.msi";
 		// topic.publish(FileUtil.getFile(filepath));
@@ -63,5 +63,7 @@ public class PubTopic {
 //		}
 //		topic.destroy();
 //		hazelcastInstance.shutdown();
+		
+		System.out.println("send success!");
 	}
 }
